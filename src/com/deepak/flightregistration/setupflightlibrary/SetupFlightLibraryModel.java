@@ -14,8 +14,8 @@ public class SetupFlightLibraryModel implements SetupFlightLibraryModelCallback{
     }
 
     @Override
-    public void addFlightDetailsDB(String flightNumber, String flightName, String departure, String destination, String departureTime) {
-        Flight addedFlight = FlightDB.getInstance().addFlightToDB(flightNumber, flightName, departure, destination, departureTime);
+    public void addFlightDetailsDB(String flightNumber, String flightName, String departure, String destination, String departureDateTime, String destinationDateTime, String seatingClass, int totalPassengers) {
+        Flight addedFlight = FlightDB.getInstance().addFlightToDB(flightNumber, flightName, departure, destination, departureDateTime, destinationDateTime, seatingClass, totalPassengers);
         setupFlightLibraryController.flightAddedSuccessfully(addedFlight);
     }
 
@@ -23,5 +23,11 @@ public class SetupFlightLibraryModel implements SetupFlightLibraryModelCallback{
     public void getAvailableFlightsDB() {
         List<Flight> flights = FlightDB.getInstance().getAvailableFlightsFromDB();
         setupFlightLibraryController.availableFlights(flights);
+    }
+
+    @Override
+    public void removeFlightDetailsDB(String flightNumber) {
+        boolean isRemoved = FlightDB.getInstance().removeFlightFromDB(flightNumber);
+        setupFlightLibraryController.removeFlightDetailsStatus(isRemoved);
     }
 }

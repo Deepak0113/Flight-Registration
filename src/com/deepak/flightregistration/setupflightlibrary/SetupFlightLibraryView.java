@@ -10,7 +10,7 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     private final Scanner scanner = new Scanner(System.in);
     private SetupFlightLibraryViewControllerCallback setupFlightController;
 
-    SetupFlightLibraryView(){
+    public SetupFlightLibraryView(){
         setupFlightController = new SetupFlightLibraryController(this);
     }
 
@@ -23,6 +23,7 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
         System.out.println("\nHi admin");
         System.out.println("1. Add flight");
         System.out.println("2. View flights");
+        System.out.println("3. Remove flights");
         System.out.print("Enter option: ");
         int option = Integer.parseInt(scanner.nextLine());
         setupFlightController.chooseOption(option);
@@ -39,16 +40,23 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
         System.out.print("Enter flight destination: ");
         String destination = scanner.nextLine();
         System.out.print("Enter flight departure time: ");
-        String departureTime = scanner.nextLine();
+        String departureDateTime = scanner.nextLine();
+        System.out.print("Enter flight destination time: ");
+        String destinationDateTime = scanner.nextLine();
+        System.out.print("Enter flight seating class: ");
+        String seatingClass = scanner.nextLine();
+        System.out.print("Enter total passengers limit: ");
+        int totalPassengers = Integer.parseInt(scanner.nextLine());
 
-        setupFlightController.addFlightDetails(flightNumber, flightName, departure, destination, departureTime);
+        setupFlightController.addFlightDetails(flightNumber, flightName, departure, destination, departureDateTime, destinationDateTime, seatingClass, totalPassengers);
     }
 
     @Override
-    public void selectValidOption() {
-        System.out.println("Select valid option.");
+    public void removeFlightDetails() {
+        System.out.println("Flight number: ");
+        String flightNumber = scanner.nextLine();
+        setupFlightController.removeFlightDetails(flightNumber);
     }
-
 
     @Override
     public void flightAddedSuccessfully(Flight flight) {
@@ -81,5 +89,20 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     @Override
     public void noFlightAvailableWarning() {
 
+    }
+
+    @Override
+    public void removedFlightSuccessfully() {
+        System.out.println("Removed successfully");
+    }
+
+    @Override
+    public void removeFlightFailed() {
+        System.out.println("Something went wrong");
+    }
+
+    @Override
+    public void selectValidOptionWarning() {
+        System.out.println("Select valid option.");
     }
 }

@@ -1,15 +1,16 @@
-package com.deepak.flightregistration.login;
+package com.deepak.flightregistration.adminlogin;
 
 import com.deepak.flightregistration.dto.User;
+import com.deepak.flightregistration.setupflightlibrary.SetupFlightLibraryView;
 
 import java.util.Scanner;
 
-public class LoginView implements LoginViewCallback{
+public class AdminLoginView implements AdminLoginViewCallback {
     private final Scanner scanner = new Scanner(System.in);
-    private LoginViewControllerCallback loginController;
+    private AdminLoginViewControllerCallback adminLoginController;
 
-    public LoginView(){
-        loginController = new LoginController(this);
+    public AdminLoginView(){
+        adminLoginController = new AdminLoginController(this);
     }
 
     private void getLoginDetails(){
@@ -17,12 +18,12 @@ public class LoginView implements LoginViewCallback{
         String userName = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
-        loginController.userLogin(userName, password);
+        adminLoginController.adminLogin(userName, password);
     }
 
     public static void main(String[] args) {
-        LoginView loginView = new LoginView();
-        loginView.startLogin();
+        AdminLoginView adminLoginView = new AdminLoginView();
+        adminLoginView.startLogin();
     }
 
     public void startLogin(){
@@ -38,6 +39,9 @@ public class LoginView implements LoginViewCallback{
     public void successfulUserLogin(User user) {
         System.out.println("---> Welcome " + user.getUsername() + "<---");
         System.out.println("Thank you for logging in");
+
+        SetupFlightLibraryView setupFlightLibraryView = new SetupFlightLibraryView();
+        setupFlightLibraryView.startSetupFlightLibrary();
     }
 
     @Override

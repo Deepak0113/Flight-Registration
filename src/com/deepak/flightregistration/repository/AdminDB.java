@@ -5,23 +5,22 @@ import com.deepak.flightregistration.dto.Credentials;
 
 import java.util.ArrayList;
 
-public class Repository {
-    private static Repository repository;
-
+public class AdminDB {
+    private static AdminDB adminDB;
     private ArrayList<Credentials> credentials = new ArrayList<>();
 
-    public static Repository getInstance(){
-        if(repository == null){
-            repository = new Repository();
-            repository.initSetup();
+    public static AdminDB getInstance(){
+        if(adminDB == null){
+            adminDB = new AdminDB();
+            adminDB.initSetup();
         }
 
-        return repository;
+        return adminDB;
     }
 
     private void initSetup(){
-        credentials.add(new Credentials("admin", "admin"));
-        credentials.add(new Credentials("deepakm", "deepakm"));
+        credentials.add(new Credentials("admin", "admin@gmail.com" , "admin"));
+        credentials.add(new Credentials("deepakm", "deepak@gmail.com", "deepakm"));
     }
 
     public User checkValidUser(String userName, String password){

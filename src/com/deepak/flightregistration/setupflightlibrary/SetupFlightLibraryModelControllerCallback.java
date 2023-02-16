@@ -9,4 +9,6 @@ public interface SetupFlightLibraryModelControllerCallback {
     void flightAddFailed(String message);
 
     void availableFlights(List<Flight> flights);
+
+    void removeFlightDetailsStatus(boolean isRemoved);
 }

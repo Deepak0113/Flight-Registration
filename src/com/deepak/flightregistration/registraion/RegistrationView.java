@@ -1,9 +1,9 @@
 package com.deepak.flightregistration.registraion;
 
-public class RegistrationView {
+public class RegistrationView implements RegistrationViewCallback{
     private RegistrationController registrationController;
 
     RegistrationView(){
-//        registrationController = new RegistrationController(this);
+        registrationController = new RegistrationController(this);
     }
 }

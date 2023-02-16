@@ -2,7 +2,6 @@ package com.deepak.flightregistration.setupflightlibrary;
 
 import com.deepak.flightregistration.dto.Flight;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SetupFlightLibraryController implements SetupFlightLibraryViewControllerCallback, SetupFlightLibraryModelControllerCallback {
@@ -15,8 +14,8 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
     }
 
     @Override
-    public void addFlightDetails(String flightNumber, String flightName, String departure, String destination, String departureTime) {
-        setupFlightLibraryModel.addFlightDetailsDB(flightNumber, flightName, departure, destination, departureTime);
+    public void addFlightDetails(String flightNumber, String flightName, String departure, String destination, String departureDateTime, String destinationDateTime, String seatingClass, int totalPassengers) {
+        setupFlightLibraryModel.addFlightDetailsDB(flightNumber, flightName, departure, destination, departureDateTime, destinationDateTime, seatingClass, totalPassengers);
     }
 
     @Override
@@ -29,7 +28,7 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
                 setupFlightLibraryView.getAvailableFlights();
                 break;
             default:
-                setupFlightLibraryView.selectValidOption();
+                setupFlightLibraryView.selectValidOptionWarning();
                 break;
         }
     }
@@ -37,6 +36,11 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
     @Override
     public void getAvailableFlights() {
         setupFlightLibraryModel.getAvailableFlightsDB();
+    }
+
+    @Override
+    public void removeFlightDetails(String flightNumber) {
+        setupFlightLibraryModel.removeFlightDetailsDB(flightNumber);
     }
 
     @Override
@@ -55,6 +59,15 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
             setupFlightLibraryView.viewAvailableFlights(flights);
         } else{
             setupFlightLibraryView.noFlightAvailableWarning();
+        }
+    }
+
+    @Override
+    public void removeFlightDetailsStatus(boolean isRemoved) {
+        if(isRemoved){
+            setupFlightLibraryView.removedFlightSuccessfully();
+        } else{
+            setupFlightLibraryView.removeFlightFailed();
         }
     }
 
