@@ -5,19 +5,15 @@ import java.util.List;
 public class Ticket {
     private String ticketID;
     private Flight flight;
+    private int passengers;
     private List<Passenger> passengerList;
-    private float ticketPrice;
-    private int baggage;
-    private float baggagePrice;
     private float totalPrice;
 
-    public Ticket(String ticketID, Flight flight, List<Passenger> passengerList, float ticketPrice, int baggage, float baggagePrice, float totalPrice) {
+    public Ticket(String ticketID, Flight flight, int passengers, List<Passenger> passengerList, float totalPrice) {
         this.ticketID = ticketID;
         this.flight = flight;
+        this.passengers = passengers;
         this.passengerList = passengerList;
-        this.ticketPrice = ticketPrice;
-        this.baggage = baggage;
-        this.baggagePrice = baggagePrice;
         this.totalPrice = totalPrice;
     }
 
@@ -45,35 +41,32 @@ public class Ticket {
         this.passengerList = passengerList;
     }
 
-    public float getTicketPrice() {
-        return ticketPrice;
-    }
-
-    public void setTicketPrice(float ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
-
-    public int getBaggage() {
-        return baggage;
-    }
-
-    public void setBaggage(int baggage) {
-        this.baggage = baggage;
-    }
-
-    public float getBaggagePrice() {
-        return baggagePrice;
-    }
-
-    public void setBaggagePrice(float baggagePrice) {
-        this.baggagePrice = baggagePrice;
-    }
-
     public float getTotalPrice() {
         return totalPrice;
     }
 
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(int passengers) {
+        this.passengers = passengers;
+    }
+
+    @Override
+    public String toString() {
+        String res = "Ticket Id: " + ticketID + "\n";
+        res += flight.toString() + "\n";
+        for(Passenger passenger: passengerList){
+            res += passenger + "\n";
+        }
+
+        res += getTotalPrice();
+
+        return res;
     }
 }

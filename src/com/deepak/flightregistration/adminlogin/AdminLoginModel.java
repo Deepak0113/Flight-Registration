@@ -1,7 +1,7 @@
 package com.deepak.flightregistration.adminlogin;
 
 import com.deepak.flightregistration.dto.User;
-import com.deepak.flightregistration.repository.AdminDB;
+import com.deepak.flightregistration.repository.Repository;
 
 public class AdminLoginModel implements AdminLoginModelCallback {
     private AdminLoginModelControllerCallback adminLoginController;
@@ -12,7 +12,7 @@ public class AdminLoginModel implements AdminLoginModelCallback {
 
     @Override
     public void checkCredentials(String userName, String password) {
-        User user = AdminDB.getInstance().checkValidUser(userName, password);
+        User user = Repository.getInstance().checkValidAdmin(userName, password);
 
         if(user != null){
             adminLoginController.adminLoginSuccessful(user);

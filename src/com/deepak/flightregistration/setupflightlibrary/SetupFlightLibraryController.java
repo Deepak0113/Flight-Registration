@@ -14,11 +14,6 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
     }
 
     @Override
-    public void addFlightDetails(String flightNumber, String flightName, String departure, String destination, String departureDateTime, String destinationDateTime, String seatingClass, int totalPassengers) {
-        setupFlightLibraryModel.addFlightDetailsDB(flightNumber, flightName, departure, destination, departureDateTime, destinationDateTime, seatingClass, totalPassengers);
-    }
-
-    @Override
     public void chooseOption(int option) {
         switch (option){
             case 1:
@@ -34,13 +29,8 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
     }
 
     @Override
-    public void getAvailableFlights() {
-        setupFlightLibraryModel.getAvailableFlightsDB();
-    }
-
-    @Override
-    public void removeFlightDetails(String flightNumber) {
-        setupFlightLibraryModel.removeFlightDetailsDB(flightNumber);
+    public void addFlightDetails(String flightNumber, String flightName, String departure, String destination, String departureDateTime, String destinationDateTime, String seatingClass, int totalPassengers) {
+        setupFlightLibraryModel.addFlightDetailsDB(flightNumber, flightName, departure, destination, departureDateTime, destinationDateTime, seatingClass, totalPassengers);
     }
 
     @Override
@@ -54,12 +44,8 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
     }
 
     @Override
-    public void availableFlights(List<Flight> flights) {
-        if(flights.size() != 0){
-            setupFlightLibraryView.viewAvailableFlights(flights);
-        } else{
-            setupFlightLibraryView.noFlightAvailableWarning();
-        }
+    public void removeFlightDetailsControlller(String flightNumber) {
+        setupFlightLibraryModel.removeFlightDetailsDB(flightNumber);
     }
 
     @Override
@@ -71,5 +57,17 @@ public class SetupFlightLibraryController implements SetupFlightLibraryViewContr
         }
     }
 
+    @Override
+    public void getAvailableFlights() {
+        setupFlightLibraryModel.getAvailableFlightsDB();
+    }
 
+    @Override
+    public void availableFlights(List<Flight> flights) {
+        if(flights.size() != 0){
+            setupFlightLibraryView.viewAvailableFlights(flights);
+        } else{
+            setupFlightLibraryView.noFlightAvailableWarning();
+        }
+    }
 }

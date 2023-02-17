@@ -8,4 +8,19 @@ public class RegistrationController implements RegistrationViewControllerCallbac
         this.registrationView = registrationView;
         registrationModel = new RegistrationModel(this);
     }
+
+    @Override
+    public void successfulRegistrationController() {
+        registrationView.successfulRegistration();
+    }
+
+    @Override
+    public void failedRegistrationController(String message) {
+        registrationView.failedRegistration(message);
+    }
+
+    @Override
+    public void userRegistration(String userName, String email, String password) {
+        registrationModel.userRegisterDB(userName, email, password);
+    }
 }

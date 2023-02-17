@@ -23,10 +23,10 @@ public class AdminLoginView implements AdminLoginViewCallback {
 
     public static void main(String[] args) {
         AdminLoginView adminLoginView = new AdminLoginView();
-        adminLoginView.startLogin();
+        adminLoginView.startAdminLogin();
     }
 
-    public void startLogin(){
+    public void startAdminLogin(){
         getLoginDetails();
     }
 
@@ -47,6 +47,6 @@ public class AdminLoginView implements AdminLoginViewCallback {
     @Override
     public void failedLogin(String failedMessage) {
         System.out.println("Login failed. " + failedMessage);
-        startLogin();
+        startAdminLogin();
     }
 }

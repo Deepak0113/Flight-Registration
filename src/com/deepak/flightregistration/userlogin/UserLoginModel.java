@@ -1,7 +1,7 @@
 package com.deepak.flightregistration.userlogin;
 
 import com.deepak.flightregistration.dto.User;
-import com.deepak.flightregistration.repository.UserDB;
+import com.deepak.flightregistration.repository.Repository;
 
 public class UserLoginModel implements UserLoginModelCallback {
     private UserLoginModelControllerCallback userLoginController;
@@ -12,7 +12,7 @@ public class UserLoginModel implements UserLoginModelCallback {
 
     @Override
     public void checkCredentials(String userName, String password) {
-        User user = UserDB.getInstance().checkValidUser(userName, password);
+        User user = Repository.getInstance().checkValidUser(userName, password);
 
         if(user != null){
             userLoginController.userLoginSuccessful(user);

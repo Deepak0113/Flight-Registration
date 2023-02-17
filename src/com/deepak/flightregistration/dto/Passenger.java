@@ -6,13 +6,15 @@ public class Passenger {
     private String gender;
     private String phoneNumber;
     private String nationality;
+    private String aadharID;
 
-    public Passenger(String name, String email, String gender, String phoneNumber, String nationality) {
+    public Passenger(String name, String email, String gender, String phoneNumber, String nationality, String aadharID) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.nationality = nationality;
+        this.aadharID = aadharID;
     }
 
     public String getName() {

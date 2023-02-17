@@ -2,7 +2,6 @@ package com.deepak.flightregistration.setupflightlibrary;
 
 import com.deepak.flightregistration.dto.Flight;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,13 +51,6 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     }
 
     @Override
-    public void removeFlightDetails() {
-        System.out.println("Flight number: ");
-        String flightNumber = scanner.nextLine();
-        setupFlightController.removeFlightDetails(flightNumber);
-    }
-
-    @Override
     public void flightAddedSuccessfully(Flight flight) {
         System.out.println("\nFlight added successfully.");
         System.out.println(flight);
@@ -69,6 +61,23 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     @Override
     public void flightAddFailed(String message) {
         System.out.println("Failed to add flight. " + message);
+    }
+
+    @Override
+    public void removeFlightDetails() {
+        System.out.println("Flight number: ");
+        String flightNumber = scanner.nextLine();
+        setupFlightController.removeFlightDetailsControlller(flightNumber);
+    }
+
+    @Override
+    public void removedFlightSuccessfully() {
+        System.out.println("Removed successfully");
+    }
+
+    @Override
+    public void removeFlightFailed() {
+        System.out.println("Something went wrong");
     }
 
     @Override
@@ -89,16 +98,6 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     @Override
     public void noFlightAvailableWarning() {
 
-    }
-
-    @Override
-    public void removedFlightSuccessfully() {
-        System.out.println("Removed successfully");
-    }
-
-    @Override
-    public void removeFlightFailed() {
-        System.out.println("Something went wrong");
     }
 
     @Override
