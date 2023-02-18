@@ -6,35 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3a985e79-5af5-47f9-87d5-b9d949eecf72" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/dto/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/dto/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationModelControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationModelControllerCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationViewCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationViewCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationViewControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/registraion/RegistrationViewControllerCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/dto/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/dto/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/dto/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/dto/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryModelCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryModelCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryModelControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryModelControllerCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryViewCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryViewCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryViewControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/setupflightlibrary/SetupFlightLibraryViewControllerCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/starting/StartingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/starting/StartingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingModelCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingModelCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingModelControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingModelControllerCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingViewCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingViewCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingViewControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketbooking/TicketBookingViewControllerCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginViewCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginViewCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginViewControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/userlogin/UserLoginViewControllerCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingModelCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingModelCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingViewControllerCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/deepak/flightregistration/ticketing/TicketingViewControllerCallback.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,17 +50,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "F:/learn/FlightRegistration",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "fileTemplates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/learn/FlightRegistration&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\learn\FlightRegistration\src\com\deepak\flightregistration\userlogin" />

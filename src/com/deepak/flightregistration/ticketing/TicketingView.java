@@ -25,9 +25,39 @@ public class TicketingView implements TicketingViewCallback {
     }
 
     /*------ Ticket Booking ------*/
+    void bookTicket(){
+        String ticketId = ticketingController.createTicket();
+        getPassengersDetails(ticketId);
+    }
+
+    void getPassengersDetails(String ticketId){
+        System.out.println("\nPassenger details");
+        System.out.println("---------------------");
+
+        for(int i=1; i<=10; i++){
+            System.out.println("\nPassenger " + i);
+            System.out.println("-------------------------");
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Email: ");
+            String email = scanner.nextLine();
+            System.out.print("Gender (male/female): ");
+            String gender = scanner.nextLine();
+            System.out.print("Phone Number: ");
+            String phno = scanner.nextLine();
+            System.out.print("Nationality: ");
+            String nationality = scanner.nextLine();
+            System.out.print("Aadhaar Id: ");
+            String aadhaarId = scanner.nextLine();
+
+            ticketingController.createPassenger(ticketId, name, email, gender, phno, nationality, aadhaarId);
+        }
+    }
 
 
     /*------ Ticket Cancellation ------*/
+
+    @Override
     public void ticketCancellation(){
         System.out.print("Enter ticket id: ");
         ticketingController.cancelTicket(scanner.nextLine());
@@ -47,6 +77,8 @@ public class TicketingView implements TicketingViewCallback {
 
 
     /*------ View Tickets ------*/
+
+    @Override
     public void viewBookedTickets(){
         ticketingController.viewBookedTickets();
     }

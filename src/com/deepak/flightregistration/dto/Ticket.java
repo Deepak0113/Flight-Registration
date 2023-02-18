@@ -17,6 +17,10 @@ public class Ticket {
         this.totalPrice = totalPrice;
     }
 
+    public Ticket(String ticketID){
+        this.ticketID = ticketID;
+    }
+
     public String getTicketID() {
         return ticketID;
     }

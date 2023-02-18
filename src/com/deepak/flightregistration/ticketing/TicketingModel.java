@@ -10,6 +10,18 @@ public class TicketingModel implements TicketingModelCallback {
         this.ticketingController = ticketingController;
     }
 
+    /*------ Ticket Booking ------*/
+
+    @Override
+    public String createNewTicket() {
+        return Repository.getInstance().createNewTicket();
+    }
+
+    @Override
+    public void createPassenger(String ticketId, String name, String email, String gender, String phoneNumber, String nationality, String aadhaarID) {
+        Repository.getInstance().createPassenger(ticketId, name, email, gender, phoneNumber, nationality, aadhaarID);
+    }
+
     /*------ Ticket Cancellation ------*/
 
     @Override
@@ -21,6 +33,7 @@ public class TicketingModel implements TicketingModelCallback {
             case "NOT EXIST" -> ticketingController.cancelTicketFailed("Ticket doesn't exists");
         }
     }
+
 
     /*------ View Ticket ------*/
 

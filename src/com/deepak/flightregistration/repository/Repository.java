@@ -254,4 +254,26 @@ public class Repository {
         ticketStatusCalls.setTicketList(ticketList);
         return ticketStatusCalls;
     }
+
+    public String createNewTicket(){
+        int rand = (int) (Math.random() * (99999-10000+1) + 10000);
+        String ticketId = String.valueOf(rand);
+        Ticket ticket = new Ticket(ticketId);
+        ticketList.add(ticket);
+
+        return ticketId;
+    }
+
+    public void createPassenger(String ticketId, String name, String email, String gender, String phoneNumber, String nationality, String aadhaarID){
+        for(Ticket ticket: ticketList){
+            if(ticket.getTicketID().equals(ticketId)){
+                Passenger passenger = new Passenger(name, email, gender, phoneNumber, nationality, aadhaarID);
+
+                List<Passenger> passengerList = ticket.getPassengerList() == null ? new ArrayList<>() : ticket.getPassengerList();
+                passengerList.add(passenger);
+
+                ticket.setPassengerList(passengerList);
+            }
+        }
+    }
 }

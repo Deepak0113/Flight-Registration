@@ -19,6 +19,7 @@ public class TicketingController implements TicketingViewControllerCallback, Tic
     public void selectOption(int option) {
         switch (option){
             case 2 -> ticketingView.ticketCancellation();
+            case 3 -> ticketingView.viewBookedTickets();
             case 9 -> System.exit(0);
         }
     }
@@ -57,5 +58,17 @@ public class TicketingController implements TicketingViewControllerCallback, Tic
     @Override
     public void viewBookedTicketsEmpty() {
         ticketingView.viewBookedTicketsEmpty();
+    }
+
+    /*------ Ticket Booking ------*/
+
+    @Override
+    public void createPassenger(String ticketId, String name, String email, String gender, String phoneNumber, String nationality, String aadhaarID) {
+        ticketingModel.createPassenger(ticketId, name, email, gender, phoneNumber, nationality, aadhaarID);
+    }
+
+    @Override
+    public String createTicket() {
+        return ticketingModel.createNewTicket();
     }
 }
