@@ -5,10 +5,12 @@ import com.deepak.flightregistration.dto.Flight;
 import java.util.List;
 
 public interface SetupFlightLibraryModelControllerCallback {
-    void flightAddedSuccessfully(Flight flight);
-    void flightAddFailed(String message);
+    void addFlightDetailsSuccess(Flight flight);
+    void addFlightDetailsExist();
 
-    void availableFlights(List<Flight> flights);
+    void viewFlightsEmpty();
+    void viewFlightsSuccess(List<Flight> flightList);
 
-    void removeFlightDetailsStatus(boolean isRemoved);
+    void removeFlightSuccess(List<Flight> flightList);
+    void removeFlightDoesNotExist();
 }

@@ -1,10 +1,10 @@
 package com.deepak.flightregistration.userlogin;
 
-import com.deepak.flightregistration.dto.User;
 import com.deepak.flightregistration.repository.Repository;
+import com.deepak.flightregistration.status.UserStatusCalls;
 
 public class UserLoginModel implements UserLoginModelCallback {
-    private UserLoginModelControllerCallback userLoginController;
+    private final UserLoginModelControllerCallback userLoginController;
 
     UserLoginModel(UserLoginModelControllerCallback userLoginController){
         this.userLoginController = userLoginController;
@@ -12,12 +12,12 @@ public class UserLoginModel implements UserLoginModelCallback {
 
     @Override
     public void checkCredentials(String userName, String password) {
-        User user = Repository.getInstance().checkValidUser(userName, password);
+        UserStatusCalls userStatusCall = Repository.getInstance().checkValidUser(userName, password);
 
-        if(user != null){
-            userLoginController.userLoginSuccessful(user);
-        } else{
-            userLoginController.userLoginFailed("error message");
+        switch (userStatusCall.getStatus()){
+            case "SUCCESS" -> userLoginController.userLoginSuccessful(userStatusCall.getUser());
+            case "PASSWORD NOT MATCH" -> userLoginController.userLoginFailed("Password Incorrect");
+            case "NOT EXISTS" -> userLoginController.userLoginFailed("Invalid username. user doesn't exist");
         }
     }
 }

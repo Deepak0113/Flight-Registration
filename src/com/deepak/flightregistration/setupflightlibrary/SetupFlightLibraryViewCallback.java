@@ -5,16 +5,18 @@ import com.deepak.flightregistration.dto.Flight;
 import java.util.List;
 
 public interface SetupFlightLibraryViewCallback {
-    void flightAddedSuccessfully(Flight flight);
-    void flightAddFailed(String message);
-    void viewAvailableFlights(List<Flight> flights);
-    void getAvailableFlights();
+    void addFlightDetailsSuccessView(Flight flight);
+    void addFlightDetailsExistView();
     void addFlightDetails();
+
+    void getAvailableFlights();
+    void viewFlightsSuccessView(List<Flight> flightList);
+    void viewFlightsEmpty();
+
     void removeFlightDetails();
-    void selectValidOptionWarning();
-    void noFlightAvailableWarning();
+    void removeFlightDetailsSuccessView(List<Flight> flightList);
+    void removeFlightDetailsDoesNotExist();
 
-    void removedFlightSuccessfully();
-
-    void removeFlightFailed();
+    void gotoStarting();
+    void exitApplication();
 }

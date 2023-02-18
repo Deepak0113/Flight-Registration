@@ -7,7 +7,15 @@ import com.deepak.flightregistration.dto.Ticket;
 import java.util.List;
 
 public interface TicketBookingModelCallback {
-    void filterUsingPreferenceDB(String preferredDeparture, String preferredDestination, String preferredDate, String preferredSeatingClass, int preferredTotalPassengers);
+    void filterFlightsUsingPreferenceDB(
+            String preferredDeparture,
+            String preferredDestination,
+            String preferredDate,
+            String preferredSeatingClass,
+            int preferredTotalPassengers
+    );
+    Flight getFlightDetails(String flightNumber);
+
     void addPassenger(String name, String email, String gender, String phoneNumber, String nationality, String aadharID);
     List<Passenger> getPassenger();
     Flight getSelectedFlight(String ticketId);

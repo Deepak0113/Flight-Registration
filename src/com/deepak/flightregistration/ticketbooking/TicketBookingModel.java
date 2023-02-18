@@ -4,6 +4,7 @@ import com.deepak.flightregistration.dto.Flight;
 import com.deepak.flightregistration.dto.Passenger;
 import com.deepak.flightregistration.dto.Ticket;
 import com.deepak.flightregistration.repository.Repository;
+import com.deepak.flightregistration.status.FlightStatusCalls;
 
 import java.util.List;
 
@@ -14,11 +15,26 @@ public class TicketBookingModel implements TicketBookingModelCallback{
         this.ticketBookingController = ticketBookingController;
     }
 
+    /*------ Ticket Booking ------*/
+
     @Override
-    public void filterUsingPreferenceDB(String preferredDeparture, String preferredDestination, String preferredDate, String preferredSeatingClass, int preferredTotalPassengers) {
+    public void filterFlightsUsingPreferenceDB(String preferredDeparture, String preferredDestination, String preferredDate, String preferredSeatingClass, int preferredTotalPassengers) {
         List<Flight> filteredFlights = Repository.getInstance().searchFlights(preferredDeparture, preferredDestination, preferredDate, preferredSeatingClass, preferredTotalPassengers);
-        ticketBookingController.filteredFlightsResp(filteredFlights);
+        ticketBookingController.filteredFlightsResponse(filteredFlights);
     }
+
+    @Override
+    public Flight getFlightDetails(String flightNumber) {
+        FlightStatusCalls flightStatusCalls = Repository.getInstance().getFlightDetails(flightNumber);
+
+        if (flightStatusCalls.getStatus().equals("SUCCESS")) {
+            return flightStatusCalls.getFlight();
+        }
+
+        return null;
+    }
+
+    /**/
 
     @Override
     public void addPassenger(String name, String email, String gender, String phoneNumber, String nationality, String aadharID) {

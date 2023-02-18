@@ -1,20 +1,38 @@
 package com.deepak.flightregistration.registraion;
 
+import com.deepak.flightregistration.starting.StartingView;
+
 import java.util.Scanner;
 
 public class RegistrationView implements RegistrationViewCallback{
     private final Scanner scanner = new Scanner(System.in);
-    private RegistrationViewControllerCallback registrationController;
+    private final RegistrationViewControllerCallback registrationController;
 
     public RegistrationView(){
         registrationController = new RegistrationController(this);
     }
 
+    /*------ Navigation ------*/
     public void startRegistration(){
-        getRegistrationDetails();
+        System.out.println("1. continue with registration");
+        System.out.println("2. go to start");
+        System.out.println("9. exit");
+        System.out.print("Enter option: ");
+        int option = Integer.parseInt(scanner.nextLine());
+
+        registrationController.selectOption(option);
     }
 
-    private void getRegistrationDetails(){
+    @Override
+    public void gotoStart() {
+        StartingView startingView = new StartingView();
+        startingView.startStartingView();
+    }
+
+    /*------ User Registration ------*/
+
+    @Override
+    public void getRegistrationDetails(){
         System.out.println("Enter username: ");
         String username = scanner.nextLine();
         System.out.println("Enter email: ");
@@ -26,13 +44,13 @@ public class RegistrationView implements RegistrationViewCallback{
     }
 
     @Override
-    public void successfulRegistration() {
-        System.out.println("Successfully registered!");
+    public void userRegistrationSuccessful() {
+        System.out.println("Successfully registered. Login to continue");
+        gotoStart();
     }
 
     @Override
-    public void failedRegistration(String message) {
-        System.out.println("Registration failed: " + message);
-        startRegistration();
+    public void userRegistrationFailed(String errorMessage) {
+        System.out.println("Registration failed: " + errorMessage);
     }
 }

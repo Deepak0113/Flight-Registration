@@ -1,6 +1,7 @@
 package com.deepak.flightregistration.registraion;
 
 import com.deepak.flightregistration.repository.Repository;
+import com.deepak.flightregistration.status.UserStatusCalls;
 
 public class RegistrationModel implements RegistrationModelCallback{
     RegistrationModelControllerCallback registrationController;
@@ -11,11 +12,11 @@ public class RegistrationModel implements RegistrationModelCallback{
 
     @Override
     public void userRegisterDB(String userName, String email, String password) {
-        String message = Repository.getInstance().addUserToDB(userName, email, password);
-        if(message.equals("Successful")){
-            registrationController.successfulRegistrationController();
-        } else{
-            registrationController.failedRegistrationController(message);
+        UserStatusCalls message = Repository.getInstance().registerUser(userName, email, password);
+
+        switch (message.getStatus()){
+            case "SUCCESS" -> registrationController.userRegistrationSuccessful();
+            case "EXIST" -> registrationController.userRegistrationFailed("ACCOUNT ALREADY EXIST");
         }
     }
 }

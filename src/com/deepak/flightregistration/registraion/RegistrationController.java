@@ -19,8 +19,33 @@ public class RegistrationController implements RegistrationViewControllerCallbac
         registrationView.failedRegistration(message);
     }
 
+
+
+    /*------ Navigation ------*/
+
+    @Override
+    public void selectOption(int option) {
+        switch (option){
+            case 1 -> registrationView.getRegistrationDetails();
+            case 2 -> registrationView.gotoStart();
+            case 9 -> System.exit(0);
+        }
+    }
+
+    /*------ Registration ------*/
+
     @Override
     public void userRegistration(String userName, String email, String password) {
         registrationModel.userRegisterDB(userName, email, password);
+    }
+
+    @Override
+    public void userRegistrationSuccessful() {
+        registrationView.userRegistrationSuccessful();
+    }
+
+    @Override
+    public void userRegistrationFailed(String errorMessage) {
+        registrationView.userRegistrationFailed(errorMessage);
     }
 }

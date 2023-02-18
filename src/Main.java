@@ -1,5 +1,8 @@
+import com.deepak.flightregistration.starting.StartingView;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        StartingView startingView = new StartingView();
+        startingView.getUserAuth();
     }
 }

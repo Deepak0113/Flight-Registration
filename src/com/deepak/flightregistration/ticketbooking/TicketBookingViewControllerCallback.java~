@@ -14,7 +14,7 @@ public interface TicketBookingViewControllerCallback {
             String preferredSeatingClass,
             int preferredTotalPassengers
     );
-    Flight getFlightDetails(String flightNumber);
+    Flight getSelectedFlight(String flightNumber);
 
     void addPassenger(String name, String email, String gender, String phoneNumber, String nationality, String aadharID);
     List<Passenger> getPassengers();

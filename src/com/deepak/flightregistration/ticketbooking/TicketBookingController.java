@@ -15,32 +15,47 @@ public class TicketBookingController implements TicketBookingViewControllerCallb
         ticketBookingModel = new TicketBookingModel(this);
     }
 
+    /*------ Navigation ------*/
+
     // choose option
     @Override
     public void chooseOption(int option) {
         switch (option){
-            case 1:
-                ticketBookingView.getUserPreference();
-                break;
-            default:
-                ticketBookingView.selectValidOptionWarning();
+            case 1 -> ticketBookingView.getUserPreferenceFlights();
+            case 2 -> ticketBookingView.cancelTicket();
+            case 3 -> ticketBookingView.showTickets();
+            default -> ticketBookingView.selectValidOptionWarning();
         }
     }
 
+
+    /*------ Ticket booking ------*/
+
     // get flights filter
     @Override
-    public void filterUsingPreference(String preferredDeparture, String preferredDestination, String preferredDate, String preferredSeatingClass, int preferredTotalPassengers) {
-        ticketBookingModel.filterUsingPreferenceDB(preferredDeparture, preferredDestination, preferredDate, preferredSeatingClass, preferredTotalPassengers);
+    public void getUserPreferredFlights(String preferredDeparture, String preferredDestination, String preferredDate, String preferredSeatingClass, int preferredTotalPassengers) {
+        ticketBookingModel.filterFlightsUsingPreferenceDB(preferredDeparture, preferredDestination, preferredDate, preferredSeatingClass, preferredTotalPassengers);
     }
+
+    // filtered flights response
+    @Override
+    public void filteredFlightsResponse(List<Flight> flights) {
+        ticketBookingView.displayFilteredFlights(flights);
+    }
+
+    // get flight details
+    @Override
+    public Flight getFlightDetails(String flightNumber) {
+        return ticketBookingModel.getFlightDetails(flightNumber);
+    }
+
+
+
+    /*------  ------*/
 
     @Override
     public void addPassenger(String name, String email, String gender, String phoneNumber, String nationality, String aadharID) {
         ticketBookingModel.addPassenger(name, email, gender, phoneNumber, nationality, aadharID);
-    }
-
-    @Override
-    public List<Passenger> getPassengers() {
-        return ticketBookingModel.getPassenger();
     }
 
     @Override
@@ -61,11 +76,5 @@ public class TicketBookingController implements TicketBookingViewControllerCallb
     @Override
     public List<Ticket> showTickets() {
         return ticketBookingModel.showTickets();
-    }
-
-    // filtered flights response
-    @Override
-    public void filteredFlightsResp(List<Flight> flights) {
-        ticketBookingView.displayFilteredFlights(flights);
     }
 }

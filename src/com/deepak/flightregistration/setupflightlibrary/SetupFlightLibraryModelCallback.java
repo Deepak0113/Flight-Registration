@@ -1,12 +1,23 @@
 package com.deepak.flightregistration.setupflightlibrary;
 
-import com.deepak.flightregistration.dto.Flight;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 public interface SetupFlightLibraryModelCallback {
-    void addFlightDetailsDB(String flightNumber, String flightName, String departure, String destination, String departureDateTime, String destinationDateTime, String seatingClass, int totalPassengers);
-    void getAvailableFlightsDB();
+    void addFlightDetailsDB(
+            String flightNumber,
+            String name,
+            String departure,
+            String destination,
+            Date departureDateTime,
+            Date destinationDateTime,
+            String[] seatingClasses,
+            int[] seatingClassesPrices,
+            int totalSeats,
+            int reservedSeats,
+            int reservationPrice
+    );
 
-    void removeFlightDetailsDB(String flightNumber);
+    void getFlightsFromDB();
+    void removeFlightsFromDB(String flightNumber);
 }
