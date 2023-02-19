@@ -2,6 +2,7 @@ package com.deepak.flightregistration.userlogin;
 
 import com.deepak.flightregistration.dto.User;
 import com.deepak.flightregistration.starting.StartingView;
+import com.deepak.flightregistration.ticketing.TicketingView;
 
 import java.util.Scanner;
 
@@ -22,7 +23,7 @@ public class UserLoginView implements UserLoginViewCallback {
     /*------ Navigation ------*/
 
     public void startUserLogin(){
-        System.out.println("1. continue with login");
+        System.out.println("\n1. continue with login");
         System.out.println("2. go to start");
         System.out.println("9. exit");
         System.out.print("Enter option: ");
@@ -48,7 +49,7 @@ public class UserLoginView implements UserLoginViewCallback {
 
     @Override
     public void getUserLoginDetails(){
-        System.out.print("Enter username: ");
+        System.out.print("\nEnter username: ");
         String userName = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
@@ -58,11 +59,15 @@ public class UserLoginView implements UserLoginViewCallback {
 
     @Override
     public void userLoginSuccessfulView(User user) {
-        System.out.println("Logged in successfully");
+        System.out.println("\n--->  Welcome " + user.getUsername() + "  <---");
+        System.out.println("Thank you for logging in");
+        TicketingView ticketingView = new TicketingView();
+        ticketingView.startTicketing();
     }
 
     @Override
     public void userLoginFailedView(String errorMessage) {
-        System.out.println("Login failed: " + errorMessage);
+        System.out.println("\nLogin failed: " + errorMessage);
+        startUserLogin();
     }
 }

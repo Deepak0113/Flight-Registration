@@ -1,40 +1,50 @@
 package com.deepak.flightregistration.ticketing;
 
+import com.deepak.flightregistration.dto.Flight;
 import com.deepak.flightregistration.dto.Ticket;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class TicketingView implements TicketingViewCallback {
     private final Scanner scanner = new Scanner(System.in);
-    private TicketingViewControllerCallback ticketingController;
+    private final TicketingViewControllerCallback ticketingController;
 
-    TicketingView() {
+    public TicketingView() {
         ticketingController = new TicketingController(this);
     }
 
     /*------ Navigation ------*/
     public void startTicketing(){
-        System.out.println("1. Book ticket");
+        System.out.println("\n1. Book ticket");
         System.out.println("2. Cancel ticket");
         System.out.println("3. View ticket");
         System.out.println("9. Exit");
+        System.out.print("Enter option: ");
         int option = Integer.parseInt(scanner.nextLine());
+    }
 
-
+    public static void main(String[] args) {
+        TicketingView ticketingView = new TicketingView();
+        ticketingView.bookTicket();
     }
 
     /*------ Ticket Booking ------*/
-    void bookTicket(){
+    @Override
+    public void bookTicket(){
         String ticketId = ticketingController.createTicket();
-        getPassengersDetails(ticketId);
+        int passengerNo = getPassengerPreferredFlight(ticketId);
+        getPassengersDetails(ticketId, passengerNo);
+        float totalCost = ticketingController.getTotalCost(ticketId);
+        System.out.println(totalCost);
     }
 
-    void getPassengersDetails(String ticketId){
+    void getPassengersDetails(String ticketId, int numOfPassengers){
         System.out.println("\nPassenger details");
         System.out.println("---------------------");
 
-        for(int i=1; i<=10; i++){
+        for(int i=1; i<=numOfPassengers; i++){
             System.out.println("\nPassenger " + i);
             System.out.println("-------------------------");
             System.out.print("Name: ");
@@ -54,6 +64,35 @@ public class TicketingView implements TicketingViewCallback {
         }
     }
 
+    int getPassengerPreferredFlight(String ticketId){
+        System.out.print("Departure: ");
+        String departure = scanner.nextLine();
+        System.out.print("Destination: ");
+        String destination = scanner.nextLine();
+        System.out.print("Departure date (MM/dd/yyyy hh:mm:ss) : ");
+        Date departureDate = new Date(scanner.nextLine());
+        System.out.print("Seating class: ");
+        String seatingClass = scanner.nextLine();
+        System.out.print("How many passengers: ");
+        int passengerNo = Integer.parseInt(scanner.nextLine());
+
+        ticketingController.viewPreferredFlights(ticketId, departure, destination, departureDate, seatingClass, passengerNo);
+        return passengerNo;
+    }
+
+    @Override
+    public void preferredFlightListView(String ticketId, List<Flight> flightList, int passengerCount) {
+        for(Flight flight: flightList){
+            System.out.println(flight);
+        }
+
+        System.out.print("Enter flight number: ");
+        String flightNumber = scanner.nextLine();
+        System.out.print("Enter seating class: ");
+        String seatClass = scanner.nextLine();
+
+        ticketingController.createSeat(ticketId, flightNumber, seatClass, passengerCount);
+    }
 
     /*------ Ticket Cancellation ------*/
 

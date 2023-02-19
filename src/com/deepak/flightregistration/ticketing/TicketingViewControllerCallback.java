@@ -1,5 +1,7 @@
 package com.deepak.flightregistration.ticketing;
 
+import java.util.Date;
+
 public interface TicketingViewControllerCallback {
     void selectOption(int option);
 
@@ -21,4 +23,10 @@ public interface TicketingViewControllerCallback {
     );
 
     String createTicket();
+
+    void viewPreferredFlights(String ticketId, String departure, String destination, Date departureDate, String seatingClass, int passengerNo);
+
+    void createSeat(String flightNumber, String seatClass, String aClass, int passengerCount);
+
+    float getTotalCost(String ticketId);
 }

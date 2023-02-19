@@ -1,9 +1,0 @@
-package com.deepak.flightregistration.ticketing;
-
-public interface TicketingModelControllerCallback {
-    void cancelTicketSuccessful();
-    void cancelTicketFailed(String errorMessage);
-
-    void viewBookedTicketsSuccessful();
-    void viewBookedTicketsEmpty();
-}

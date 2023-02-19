@@ -5,10 +5,7 @@ import com.deepak.flightregistration.status.FlightStatusCalls;
 import com.deepak.flightregistration.status.TicketStatusCalls;
 import com.deepak.flightregistration.status.UserStatusCalls;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Repository {
     private static Repository repository;
@@ -43,9 +40,9 @@ public class Repository {
         userTable.add(new Credentials("deepakm", "deepakm0113@gmail.com", "deepakm"));
 
         // hard coded flight details
-        flightsTable.add(new Flight("BA3423", "Air Asia", "Chennai", "Mumbai", new Date("02-20-2014 15:00:00"),  new Date("02-21-2014 15:00:00"), new String[]{"Economy", "Business"}, new int[]{1000, 2000}, 50, 20, 1500));
-        flightsTable.add(new Flight("BA3424", "Air Asia", "Chennai", "Bangalore", new Date("02-20-2014 15:00:00"),  new Date("02-21-2014 15:00:00"), new String[]{"Economy", "Business"}, new int[]{1000, 2000}, 50, 20, 1500));
-        flightsTable.add(new Flight("BA3425", "Air Asia", "Chennai", "Mumbai",  new Date("02-20-2014 15:00:00"),  new Date("02-21-2014 15:00:00"), new String[]{"Economy", "Business"}, new int[]{1000, 2000}, 50, 20, 1500));
+        flightsTable.add(new Flight("BA3423", "Air Asia", "Chennai", "Mumbai", new Date("02/20/2014 15:00:00"),  new Date("02/21/2014 15:00:00"), new String[]{"Economy", "Business"}, new int[]{1000, 2000}, 50, 20, 1500));
+        flightsTable.add(new Flight("BA3424", "Air Asia", "Chennai", "Bangalore", new Date("02/20/2014 15:00:00"),  new Date("02/21/2014 15:00:00"), new String[]{"Economy", "Business"}, new int[]{1000, 2000}, 50, 20, 1500));
+        flightsTable.add(new Flight("BA3425", "Air Asia", "Chennai", "Mumbai",  new Date("02/20/2014 15:00:00"),  new Date("02/21/2014 15:00:00"), new String[]{"Economy", "Business"}, new int[]{1000, 2000}, 50, 20, 1500));
     }
 
     // check credentials for admin login
@@ -78,21 +75,6 @@ public class Repository {
         }
 
         return false;
-    }
-
-    // search in flightTable
-    public List<Flight> searchFlights(String preferredDeparture, String preferredDestination, String preferredDepartureDate, String preferredSeatingClass, int preferredTotalPassengers){
-        List<Flight> filterFlight = new ArrayList<>();
-
-        for(Flight flight: flightsTable){
-            if(flight.getDeparture().equals(preferredDeparture) && flight.getDestination().equals(preferredDestination) &&
-                    flight.getDepartureDateTime().equals(preferredDepartureDate) && flight.getSeatingClasses().equals(preferredSeatingClass) &&
-                    flight.getTotalPassengers() >= preferredTotalPassengers){
-                filterFlight.add(flight);
-            }
-        }
-
-        return filterFlight;
     }
 
     // add passengers
@@ -230,6 +212,69 @@ public class Repository {
         return new FlightStatusCalls("INVALID");
     }
 
+    public List<Flight> getPreferredFlights(String departure, String destination, Date departureDate, String seatingClass, int passengerNo){
+        List<Flight> preferred = new ArrayList<>();
+
+        for(Flight flight: flightsTable){
+            if(flight.getDeparture().equals(departure) &&
+                    flight.getDestination().equals(destination) &&
+                    flight.getAvailableSeats() >= passengerNo &&
+                    Arrays.asList(flight.getSeatingClasses()).contains(seatingClass) &&
+                    flight.getDepartureDateTime().compareTo(departureDate)==0){
+                preferred.add(flight);
+            }
+        }
+
+        return preferred;
+    }
+
+    public void createSeat(String ticketId, String flightNumber, String seatClass, int passengerCount){
+        Flight flight = null;
+        Ticket ticket = null;
+
+        for (Flight currFlight: flightsTable){
+            if(currFlight.getFlightNumber().equals(flightNumber)){
+                flight = currFlight;
+                break;
+            }
+        }
+
+        for (Ticket currTicket: ticketList){
+            if(currTicket.getTicketID().equals(ticketId)){
+                ticket = currTicket;
+                break;
+            }
+        }
+
+        if(flight == null) return;
+
+        List<Seat> seatList = new ArrayList<>();
+        int[] seats = flight.getSeats();
+        for(int i=0; i<passengerCount; i++){
+            for(int j=0; j<seats.length; j++){
+                if(seats[j] == 0){
+                    int ind=0;
+                    for(String seatC: flight.getSeatingClasses()){
+                        if(seatC.equals(seatClass)){
+                            int cost = flight.getSeatingClassesPrices()[ind];
+                            Seat seat = new Seat(flightNumber, j, seatClass, cost);
+                            seatList.add(seat);
+                            ticket.setTotalPrice(ticket.getTotalPrice()+cost);
+                        }
+                        ind++;
+                    }
+                    seats[j] = 1;
+                    flight.setAvailableSeats(flight.getAvailableSeats()-1);
+
+                }
+            }
+        }
+
+        flight.setSeats(seats);
+        assert ticket != null;
+        ticket.setSeat(seatList);
+    }
+
 
     /*----- Ticket Table -----*/
 
@@ -263,6 +308,22 @@ public class Repository {
 
         return ticketId;
     }
+
+    public float getTotalCostOfTicket(String ticketId){
+        float totalCost = 0;
+        System.out.println(ticketId);
+
+        for(Ticket ticket: ticketList){
+            if(ticket.getTicketID().equals(ticketId)){
+                return ticket.getTotalPrice();
+            }
+        }
+
+        return 50000;
+    }
+
+
+    /*------ Passenger Table ------*/
 
     public void createPassenger(String ticketId, String name, String email, String gender, String phoneNumber, String nationality, String aadhaarID){
         for(Ticket ticket: ticketList){

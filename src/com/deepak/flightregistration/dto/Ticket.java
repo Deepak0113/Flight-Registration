@@ -5,6 +5,7 @@ import java.util.List;
 public class Ticket {
     private String ticketID;
     private Flight flight;
+    private List<Seat> seat;
     private int passengers;
     private List<Passenger> passengerList;
     private float totalPrice;
@@ -59,6 +60,14 @@ public class Ticket {
 
     public void setPassengers(int passengers) {
         this.passengers = passengers;
+    }
+
+    public void setSeat(List<Seat> seat) {
+        this.seat = seat;
+    }
+
+    public List<Seat> getSeat() {
+        return seat;
     }
 
     @Override

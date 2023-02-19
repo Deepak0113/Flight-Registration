@@ -7,6 +7,7 @@ public class Passenger {
     private String phoneNumber;
     private String nationality;
     private String aadhaarID;
+    private Seat seat;
 
     public Passenger(String name, String email, String gender, String phoneNumber, String nationality, String aadhaarID) {
         this.name = name;
@@ -31,6 +32,10 @@ public class Passenger {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 
     public String getGender() {

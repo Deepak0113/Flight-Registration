@@ -20,8 +20,7 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
 
     // starts when setup comes
     public void startSetupFlightLibrary(){
-        System.out.println("\nHi admin");
-        System.out.println("1. Add flight");
+        System.out.println("\n1. Add flight");
         System.out.println("2. View flights");
         System.out.println("3. Remove flights");
         System.out.println("4. Go to starting");
@@ -50,7 +49,7 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     @Override
     public void addFlightDetails(){
         // enter flight number from admin
-        System.out.print("Enter flight number: ");
+        System.out.print("\nEnter flight number: ");
         String flightNumber = scanner.nextLine();
 
         // enter flight name from admin
@@ -110,8 +109,9 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
 
     @Override
     public void addFlightDetailsSuccessView(Flight flight) {
-        System.out.println("Successfully flight added");
+        System.out.println("\nSuccessfully flight added");
         System.out.println(flight);
+        startSetupFlightLibrary();
     }
 
     @Override
@@ -131,9 +131,12 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     // view flights
     @Override
     public void viewFlightsSuccessView(List<Flight> flightList) {
+        System.out.println();
         for(Flight flight: flightList){
             System.out.println(flight);
         }
+
+        startSetupFlightLibrary();
     }
 
     // no available flights
@@ -148,14 +151,14 @@ public class SetupFlightLibraryView implements SetupFlightLibraryViewCallback{
     // remove flight details
     @Override
     public void removeFlightDetails() {
-        System.out.println("Enter flight number: ");
+        System.out.print("\nEnter flight number: ");
         setupFlightController.removeFlightDetails(scanner.nextLine());
     }
 
     @Override
     public void removeFlightDetailsSuccessView(List<Flight> flightList) {
-        System.out.println("Removed flight: ");
-        System.out.println(flightList);
+        System.out.println("\nRemoved flight Successfully");
+        startSetupFlightLibrary();
     }
 
     @Override

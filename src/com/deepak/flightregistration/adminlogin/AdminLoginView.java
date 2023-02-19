@@ -14,6 +14,8 @@ public class AdminLoginView implements AdminLoginViewCallback {
     }
 
     private void getLoginDetails(){
+        System.out.println("\nAdmin Login");
+        System.out.println("------------------------------");
         System.out.print("Enter username: ");
         String userName = scanner.nextLine();
         System.out.print("Enter password: ");
@@ -37,7 +39,7 @@ public class AdminLoginView implements AdminLoginViewCallback {
 
     @Override
     public void successfulUserLogin(User user) {
-        System.out.println("---> Welcome " + user.getUsername() + "<---");
+        System.out.println("\n--->  Welcome " + user.getUsername() + "  <---");
         System.out.println("Thank you for logging in");
 
         SetupFlightLibraryView setupFlightLibraryView = new SetupFlightLibraryView();
